@@ -1,0 +1,22 @@
+buildscript {
+    repositories {
+        jcenter()
+    }
+  
+    dependencies {
+        classpath 'org.ajoberstar:gradle-git:0.11.1-rc.2'
+    }
+}
+
+version = '1.0.0'
+
+apply plugin: 'org.ajoberstar.release-base'
+
+import org.ajoberstar.grgit.Grgit
+import org.ajoberstar.gradle.git.release.opinion.Strategies
+
+release {
+    grgit = Grgit.open(project.file('.'))
+    
+    defaultVersionStrategy = Strategies.SNAPSHOT
+}
