@@ -16,7 +16,7 @@ import org.ajoberstar.gradle.git.release.opinion.Strategies
 release {
     grgit = Grgit.open(project.file('.'))
     
-    defaultVersionStrategy = Strategies.FINAL
+    defaultVersionStrategy = Strategies.SNAPSHOT
     
     tagStrategy {
         prefixNameWithV = false
