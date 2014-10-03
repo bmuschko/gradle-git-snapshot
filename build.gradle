@@ -8,8 +8,6 @@ buildscript {
     }
 }
 
-version = '1.0.0'
-
 apply plugin: 'org.ajoberstar.release-base'
 
 import org.ajoberstar.grgit.Grgit
@@ -18,5 +16,10 @@ import org.ajoberstar.gradle.git.release.opinion.Strategies
 release {
     grgit = Grgit.open(project.file('.'))
     
-    defaultVersionStrategy = Strategies.SNAPSHOT
+    defaultVersionStrategy = Strategies.FINAL
+    
+    tagStrategy {
+        prefixNameWithV = false
+        generateMessage = { version -> "My new version $version.version" }
+    }
 }
